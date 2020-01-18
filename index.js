@@ -12,5 +12,25 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  return tutorials.map(tutorial => {
+   return transform(tutorial)
+  })
 }
+
+function transform(sentence){
+  let splitSent = sentence.split(' ')
+  let newSent = ''
+  for(let word in splitSent){
+    if(splitSent[word] === splitSent[0]){
+      splitSent[word] = splitSent[word][0].toUpperCase() + splitSent[word].slice(1)
+      newSent = splitSent[word]
+    } else {
+      splitSent[word] = splitSent[word][0].toUpperCase() + splitSent[word].slice(1)
+      newSent = newSent + ' ' + splitSent[word]
+    }
+  }
+  
+    return newSent
+}
+
+transform('what is the difference between event capturing and bubbling?')
